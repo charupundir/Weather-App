@@ -1,0 +1,29 @@
+@import "Tailwindcss";
+/* Smooth font + transitions */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: linear-gradient(to bottom right, #e0f2fe, #f3f4f6);
+  color: #1f2937; /* gray-800 */
+}
+
+/* Custom Scrollbar (optional but attractive) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #60a5fa; /* Tailwind's blue-400 */
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2563eb; /* blue-600 */
+}
+
+/* Selection color */
+::selection {
+  background: #2563eb;
+  color: white;
+}

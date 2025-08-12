@@ -1,0 +1,42 @@
+/* Navbar styling */
+nav {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Active link underline animation */
+nav a {
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.2s ease-in-out;
+}
+nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  background-color: white;
+  transition: width 0.3s ease-in-out;
+}
+nav a:hover::after,
+nav a.active::after {
+  width: 100%;
+}
+
+/* Card hover effect */
+.weather-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.weather-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Buttons */
+button {
+  transition: background-color 0.25s ease-in-out, transform 0.15s ease;
+}
+button:hover {
+  transform: scale(1.04);
+}
