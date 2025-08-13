@@ -6,10 +6,8 @@ import "./App.css";
 function App() {
   return (
     <div className="min-h-screen bg-gray-50">
-
       {/* Navbar */}
       <nav className="bg-blue-600 text-white p-3 flex justify-between items-center">
-
         {/* Left Side - Title */}
         <h1 className="text-lg font-extrabold italic tracking-wide hover:text-yellow-300 transition-colors duration-300">
           Weather Tracker
@@ -17,32 +15,16 @@ function App() {
 
         {/* Right Side - Links */}
         <div className="flex gap-4">
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive ? "underline font-bold" : "hover:underline"
-            }
-          >
+          <NavLink to="/" className="hover:underline">
             Home
           </NavLink>
-          <NavLink
-            to="/about"
-            className={({ isActive }) =>
-              isActive ? "underline font-bold" : "hover:underline"
-            }
-          >
+          <NavLink to="/about" className="hover:underline">
             About
           </NavLink>
-          <NavLink
-            to="/settings"
-            className={({ isActive }) =>
-              isActive ? "underline font-bold" : "hover:underline"
-            }
-          >
+          <NavLink to="/settings" className="hover:underline">
             Settings
           </NavLink>
         </div>
-
       </nav>
 
       {/* Routes */}
@@ -52,3 +34,4 @@ function App() {
 }
 
 export default App;
+
