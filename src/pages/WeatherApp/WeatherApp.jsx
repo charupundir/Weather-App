@@ -38,7 +38,7 @@ function WeatherApp() {
   useEffect(() => {
     getWeather(city);
 
-    let intervalId; // yaha hum direct variable use karenge
+    let intervalId; 
 
     if (autoRefresh) {
       intervalId = setInterval(() => getWeather(city), 10000);
