@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { DEFAULT_CITY } from "../../config";
 import { fetchWeather } from "../../utils/api";
 import SearchBar from "../../components/SearchBar";
@@ -15,8 +15,7 @@ function WeatherApp() {
   const [lastUpdated, setLastUpdated] = useState(null);
   const [autoRefresh, setAutoRefresh] = useState(true);
 
-  const intervalRef = useRef();
-
+  // Weather fetch function
   const getWeather = async (selectedCity) => {
     setLoading(true);
     setError("");
@@ -35,14 +34,25 @@ function WeatherApp() {
     setLoading(false);
   };
 
+  // useEffect for fetching data & auto-refresh
   useEffect(() => {
     getWeather(city);
+
+    let intervalId; // yaha hum direct variable use karenge
+
     if (autoRefresh) {
-      intervalRef.current = setInterval(() => getWeather(city), 10000);
+      intervalId = setInterval(() => getWeather(city), 10000);
     }
-    return () => clearInterval(intervalRef.current);
+
+    // cleanup
+    return () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+    };
   }, [city, autoRefresh]);
 
+  // Search button event
   const handleSearch = () => {
     if (search.trim()) setCity(search.trim());
   };
@@ -50,10 +60,13 @@ function WeatherApp() {
   return (
     <div className="max-w-md mx-auto mt-6 p-4 bg-gray-100 rounded shadow">
       <h1 className="text-3xl font-bold text-center mb-4">Weather Tracker</h1>
+
       <SearchBar search={search} setSearch={setSearch} onSearch={handleSearch} />
+
       {loading && <Spinner />}
       {error && <ErrorMessage message={error} />}
       {weather && <WeatherCard weather={weather} lastUpdated={lastUpdated} />}
+
       <div className="flex justify-center gap-3 mt-4">
         {autoRefresh ? (
           <button
@@ -76,3 +89,4 @@ function WeatherApp() {
 }
 
 export default WeatherApp;
+
