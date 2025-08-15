@@ -1,12 +1,12 @@
 import React from "react";
 
-function SearchBar({ search, setSearch, onSearch }) {
+function SearchBar({ value, onChange, onSearch }) {
   return (
     <div className="flex gap-2 my-4">
       <input
         type="text"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
         placeholder="Enter city"
         className="border border-gray-400 rounded px-3 py-2 flex-grow"
       />
